@@ -1,0 +1,39 @@
+*{
+    font-family: 'poppins';
+}
+
+h1,h2,h3,h4,h5,a{
+    font-family: 'Koulen' !important;
+    text-decoration: none;
+}
+
+.nav-links{
+    font-family: 'poppins' !important;
+}
+
+p{
+    color: #000;
+}
+
+.text-teal {
+    color: #20e2c6;
+    font-family: 'Koulen';
+}
+
+.btn-teal {
+    background-color: #20e2c6;
+    border: none;
+    font-family: 'Koulen';
+    border-style: outset;
+    border-color: #000;
+    color: #000 !important;
+}
+
+.btn-teal:hover {
+    background-color: #17c3a5;
+    color: #fff !important;
+}
+
+.card{
+    height: 100% !important;
+}

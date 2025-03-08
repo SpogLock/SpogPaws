@@ -1,0 +1,74 @@
+.landingpage{
+    background-color: #6848BD;
+}
+
+.hero-heading{
+    color: white;
+    font-size: 120px;
+}
+
+.hero-heading-black{
+    color: #000;
+    font-size: 96px;
+}
+
+.hero-subtitle{
+    color: white;
+}
+
+.petcaresection {
+    background-color: #fff;
+}
+
+.verified-card {
+    background-color: #3e2285;
+    border-radius: 15px;
+}
+
+.verified-card h4,
+.verified-card p {
+    color: #fff;
+}
+
+
+.profile-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-10px);
+}
+
+.profile-card .card-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-card .star-rating {
+    color: #FFD700;
+    font-size: 18px;
+}
+
+.btn-custom {
+    background-color: #00C897;
+    color: #000;
+    border-radius: 25px;
+    padding: 5px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #01977E;
+}
+
+.btn-dark {
+    background-color: #000;
+    color: #fff;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dark:hover {
+    background-color: #333;
+}
