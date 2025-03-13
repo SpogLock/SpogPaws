@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-white shadow-sm py-2">
+<nav class="navbar navbar-expand-lg bg-white py-2">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="#">
@@ -14,15 +14,15 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item pe-4">
-                    <a class="nav-link text-dark" href="#">Home</a>
+                    <a class="nav-link text-dark" href="/">Home</a>
                 </li>
                 <li class="nav-item pe-4 dropdown">
                     <a class="nav-link dropdown-toggle text-dark" href="#" id="vetsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         For Vets
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="vetsDropdown">
-                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                        <li><a class="dropdown-item" href="#">Option 2</a></li>
+                        <li><a class="dropdown-item" href="{{route('get-vets-registerpage')}}">Become a vet</a></li>
+                        <li><a class="dropdown-item" href="#">Support</a></li>
                     </ul>
                 </li>
                 <li class="nav-item pe-4 dropdown">
@@ -30,18 +30,20 @@
                         For Pet Owners
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="petOwnerDropdown">
-                        <li><a class="dropdown-item" href="#">Option 1</a></li>
-                        <li><a class="dropdown-item" href="#">Option 2</a></li>
+                        <li><a class="dropdown-item" href="{{route('get-find-vetspage')}}">Connect to vet</a></li>
+                        <li><a class="dropdown-item" href="{{route('get-adoptionpage')}}">Adopt a pet</a></li>
+                        <li><a class="dropdown-item" href="{{route('get-reportcasepage')}}">Report adoption</a></li>
+
                     </ul>
                 </li>
                 <li class="nav-item pe-4">
-                    <a class="nav-link text-dark" href="#">Case Studies</a>
+                    <a class="nav-link text-dark" href="{{route('get-casestudiespage')}}">Case Studies</a>
                 </li>
                 <li class="nav-item pe-4">
-                    <a class="btn btn-teal rounded-pill text-white px-4 py-2 mx-3" href="#">OWN A PET</a>
+                    <a class="btn btn-teal rounded-pill text-white px-4 py-2 mx-3" href="{{route('get-adoptionpage')}}">OWN A PET</a>
                 </li>
                 <li class="nav-item border-start ps-4 text-center">
-                    <a class="nav-link text-dark" href="#">
+                    <a class="nav-link text-dark" href="{{route('get-loginpage')}}">
                         <i class="bi bi-person-circle fs-4 d-block"></i>
                         <div class=" small">Login</div>
                     </a>

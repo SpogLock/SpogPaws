@@ -1,20 +1,10 @@
+/* Landing Page */
 .landingpage{
     background-color: #6848BD;
 }
 
-.hero-heading{
-    color: white;
-    font-size: 120px;
-}
 
-.hero-heading-black{
-    color: #000;
-    font-size: 96px;
-}
-
-.hero-subtitle{
-    color: white;
-}
+/* Pet care section */
 
 .petcaresection {
     background-color: #fff;
@@ -30,25 +20,6 @@
     color: #fff;
 }
 
-
-.profile-card {
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-}
-
-.profile-card:hover {
-    transform: translateY(-10px);
-}
-
-.profile-card .card-title {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.profile-card .star-rating {
-    color: #FFD700;
-    font-size: 18px;
-}
 
 .btn-custom {
     background-color: #00C897;
@@ -72,3 +43,42 @@
 .btn-dark:hover {
     background-color: #333;
 }
+
+/* App section */
+
+.app-section{
+    background-color: #6848BD;
+}
+
+/* Case studies section */
+
+.case-studies-section{
+    background-image: url('../images/bg-home-casestudies.png');
+    background-size:cover;
+}
+
+.case-study-card{
+    border: #000 !important;
+    border-style: solid !important;
+}
+
+.case-study-image {
+    border: #000 !important;
+    border-style: solid !important;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    height: 250px;
+
+}
+
+.testimonials-section{
+    height: 100vh;
+}
+
+/* Make a difference form */
+.difference-section{
+    background-color: #6848BD;
+}
+
+
