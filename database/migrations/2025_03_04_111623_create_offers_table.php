@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('type');
             $table->text('description');
 
-            $table->foreign('id')        // Column in this table
+            $table->foreign('clinic_id')        // Column in this table
                   ->references('id')          // Column in the referenced table
                   ->on('users')               // Referenced table
                   ->onDelete('cascade');
