@@ -42,12 +42,37 @@
                 <li class="nav-item pe-4">
                     <a class="btn btn-teal rounded-pill text-white px-4 py-2 mx-3" href="{{route('get-adoptionpage')}}">OWN A PET</a>
                 </li>
+                @php
+                $user = session('user'); // Retrieve user from session
+            @endphp
+
+            @if(!$user)
+                <!-- Show login if not logged in -->
                 <li class="nav-item border-start ps-4 text-center">
-                    <a class="nav-link text-dark" href="{{route('get-loginpage')}}">
+                    <a class="nav-link text-dark" href="{{ route('get-loginpage') }}">
                         <i class="bi bi-person-circle fs-4 d-block"></i>
-                        <div class=" small">Login</div>
+                        <div class="small">Login</div>
                     </a>
                 </li>
+            @else
+                <!-- Show username and dropdown when user is logged in -->
+                <li class="nav-item dropdown border-start ps-4">
+                    <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hello, {{ $user['name'] }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout-user') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout-user') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            @endif
             </ul>
         </div>
     </div>

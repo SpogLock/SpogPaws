@@ -14,27 +14,31 @@
         <div class="col-lg-6 text-center">
             <div class="card field-cards d-flex flex-column align-items-center justify-content-center text-center shadow">
                 <h1 class="hero-heading-black" style="font-size: 40px;">Register</h1>
-                <form>
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                <form action="{{ route('register-user') }}" method="POST">
+                    @csrf
                     <div class="mb-3 text-start">
-                        <label for="exampleInputEmail1" class="form-label">User Name</label>
-                        <input type="user-name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">Enter your public user name.</div>
-                      </div>
-                    <div class="mb-3 text-start">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                      <div id="emailHelp" class="form-text">Enter your email address. We will verify you email.</div>
+                        <label for="username" class="form-label">User Name</label>
+                        <input type="text" class="form-control" id="username" name="name" required>
                     </div>
                     <div class="mb-3 text-start">
-                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="mb-3 text-start">
-                        <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3 text-start">
+                        <label for="password_confirmation" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                     </div>
                     <button type="submit" class="btn btn-teal rounded-pill px-3">Register</button>
-                  </form>
+                </form>
             </div>
         </div>
     </div>

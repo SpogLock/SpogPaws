@@ -4,37 +4,41 @@
 
 {{-- Landing Section --}}
 <div class="container-fluid landingpage position-relative" >
-    <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center">
-            <h1 class="hero-heading px-4">BE THEIR <span class="text-teal">HERO</span></h1>
-            <h2 class="hero-subtitle px-4">From Shelters to Loving Homes, <br>Help Us Save More Pets.</h2>
-            <div>
-                <a class="btn btn-teal rounded-pill text-white px-4 py-2 mx-3" href="#">DONATE</a>
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h1 class="hero-heading px-4">BE THEIR <span class="text-teal">HERO</span></h1>
+                <h2 class="hero-subtitle px-4">From Shelters to Loving Homes, <br>Help Us Save More Pets.</h2>
+                <div>
+                    <a class="btn btn-teal rounded-pill text-white px-4 py-2 mx-3" href="#">DONATE</a>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-5">
-            <img src="{{asset('images/hero-img.png')}}" class="img-fluid pt-5" alt="">
+            <div class="col-lg-6">
+                <img src="{{asset('images/hero-img.png')}}" class="img-fluid pt-5" alt="">
+            </div>
         </div>
     </div>
 
-    {{-- Overlapping Boxes Section --}}
-    <div class="row  position-absolute w-100" style="bottom: -280px;"> <!-- Adjust bottom value for overlap -->
-        <div class="col-md-3 text-center mx-3 shadow rounded-4 p-4" style="background-color: #EDEFF0;">
-            <img src="{{asset('images/dogo-adoption.png')}}"  width="200" alt="Skipper">
-            <h4 class="text-dark">SKIPPERS</h4>
-            <p class="text-muted">Consectetur adipiscing elit, sed do eiusmod tempor.</p>
-            <a class="btn btn-teal rounded-pill text-white px-4 py-2 mx-3" href="#">Adopt Me</a>
-        </div>
-        <div class="col-md-3 text-center mx-3 shadow rounded-4 text-white  p-4" style="background-color: #28146E;">
-            <img src="{{asset('images/cat-adoption.png')}}"  width="200" alt="Skipper">
-            <h2>SAVE A LIFE</h2>
-            <p class="text-white">Consectetur adipiscing elit, sed do eiusmod tempor.</p>
-            <div>
-                <a href="{{route('get-reportcasepage')}}" class="btn btn-light rounded-pill px-3">REPORT A CASE</a>
+
+        {{-- Overlapping Boxes Section --}}
+        <div class="row  position-absolute w-100" style="bottom: -280px;"> <!-- Adjust bottom value for overlap -->
+            <div class="col-md-3 text-center mx-3 shadow rounded-4 p-4" style="background-color: #EDEFF0;">
+                <img src="{{asset('images/dogo-adoption.png')}}"  width="200" alt="Skipper">
+                <h4 class="text-dark">SKIPPERS</h4>
+                <p class="text-muted">Consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                <a class="btn btn-teal rounded-pill text-white px-4 py-2 mx-3" href="#">Adopt Me</a>
+            </div>
+            <div class="col-md-3 text-center mx-3 shadow rounded-4 text-white  p-4" style="background-color: #28146E;">
+                <img src="{{asset('images/cat-adoption.png')}}"  width="200" alt="Skipper">
+                <h2>SAVE A LIFE</h2>
+                <p class="text-white">Consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                <div>
+                    <a href="{{route('get-reportcasepage')}}" class="btn btn-light rounded-pill px-3">REPORT A CASE</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 
 {{-- Divider --}}
 <div class="divider" style="height: 40vh;"></div>

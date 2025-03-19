@@ -7,13 +7,7 @@ use Illuminate\Http\Request;
 
 class MasterController extends Controller
 {
-    public function get_loginpage(){
-        return view('client.modules.login');
-    }
 
-    public function get_registerpage(){
-        return view('client.modules.register');
-    }
 
     public function get_vets_registerpage(){
         return view('client.modules.become-vet-form');
