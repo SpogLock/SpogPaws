@@ -60,95 +60,97 @@
             <p class="text-start" style="font-size: 24px;">Provide us with your valuable skills and contribute to our mission to save stray animals.</p>
         </div>
 
-        <div class="col-lg-5 content-col d-flex flex-column  justify-content-center">
-            <form id="vetRegistrationForm" method="POST" action="#">
-                @csrf
+        <div class="col-lg-5 p-5 content-col d-flex flex-column  justify-content-center">
+            <div class="container p-5">
+                <form id="vetRegistrationForm" method="POST" action="#">
+                    @csrf
 
-                <!-- Step 1 -->
-                <div class="form-step active">
-                    <div class="mb-3 text-start">
-                        <label class="form-label">Clinic Name</label>
-                        <input type="text" name="clinic_name" class="form-control" required>
-                        <div class="form-text">Enter your clinic name.</div>
+                    <!-- Step 1 -->
+                    <div class="form-step active">
+                        <div class="mb-3 text-start">
+                            <label class="form-label">Clinic Name</label>
+                            <input type="text" name="clinic_name" class="form-control" required>
+                            <div class="form-text">Enter your clinic name.</div>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label class="form-label">User Name</label>
+                            <input type="text" name="user_name" class="form-control" required>
+                            <div class="form-text">Enter a professional username.</div>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label class="form-label">No. of Employees</label>
+                            <input type="number" name="employees" class="form-control" required>
+                            <div class="form-text">Enter the number of employees working in your clinic.</div>
+                        </div>
+                        <button type="button" class="btn btn-teal rounded-pill px-3 next-btn">Next</button>
                     </div>
-                    <div class="mb-3 text-start">
-                        <label class="form-label">User Name</label>
-                        <input type="text" name="user_name" class="form-control" required>
-                        <div class="form-text">Enter a professional username.</div>
+
+                    <!-- Step 2 -->
+                    <div class="form-step">
+                        <div class="mb-3 text-start">
+                            <label class="form-label">Clinic Address</label>
+                            <input type="text" name="clinic_address" class="form-control" required>
+                            <div class="form-text">Enter the full address of your clinic.</div>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" name="phone" class="form-control" required>
+                            <div class="form-text">Enter a valid contact number.</div>
+                        </div>
+                        <div class="upload-container">
+                            <h2>Professional Certificates</h2>
+                            <p>Kindly upload three professional certificates that prove your professional experience.</p>
+
+                            <label class="upload-box">
+                                Upload +
+                                <input type="file">
+                            </label>
+
+                            <label class="upload-box">
+                                Upload +
+                                <input type="file">
+                            </label>
+
+                            <label class="upload-box">
+                                Upload +
+                                <input type="file">
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-secondary rounded-pill px-3 prev-btn">Previous</button>
+                        <button type="button" class="btn btn-teal rounded-pill px-3 next-btn">Next</button>
                     </div>
-                    <div class="mb-3 text-start">
-                        <label class="form-label">No. of Employees</label>
-                        <input type="number" name="employees" class="form-control" required>
-                        <div class="form-text">Enter the number of employees working in your clinic.</div>
+
+                    <!-- Step 3 -->
+                    <div class="form-step">
+                        <div class="upload-container">
+                            <h2>Clinic Images</h2>
+                            <p>Kindly upload four images of your clinic or workspace.</p>
+
+                            <label class="upload-box">
+                                Upload +
+                                <input type="file">
+                            </label>
+
+                            <label class="upload-box">
+                                Upload +
+                                <input type="file">
+                            </label>
+
+                            <label class="upload-box">
+                                Upload +
+                                <input type="file">
+                            </label>
+
+                            <label class="upload-box">
+                                Upload +
+                                <input type="file">
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-secondary rounded-pill px-3 ">Previous</button>
+                        <button type="submit" class="btn btn-teal rounded-pill px-3">Submit</button>
                     </div>
-                    <button type="button" class="btn btn-teal rounded-pill px-3 next-btn">Next</button>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="form-step">
-                    <div class="mb-3 text-start">
-                        <label class="form-label">Clinic Address</label>
-                        <input type="text" name="clinic_address" class="form-control" required>
-                        <div class="form-text">Enter the full address of your clinic.</div>
-                    </div>
-                    <div class="mb-3 text-start">
-                        <label class="form-label">Phone Number</label>
-                        <input type="tel" name="phone" class="form-control" required>
-                        <div class="form-text">Enter a valid contact number.</div>
-                    </div>
-                    <div class="upload-container">
-                        <h2>Professional Certificates</h2>
-                        <p>Kindly upload three professional certificates that prove your professional experience.</p>
-
-                        <label class="upload-box">
-                            Upload +
-                            <input type="file">
-                        </label>
-
-                        <label class="upload-box">
-                            Upload +
-                            <input type="file">
-                        </label>
-
-                        <label class="upload-box">
-                            Upload +
-                            <input type="file">
-                        </label>
-                    </div>
-                    <button type="button" class="btn btn-secondary rounded-pill px-3 prev-btn">Previous</button>
-                    <button type="button" class="btn btn-teal rounded-pill px-3 next-btn">Next</button>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="form-step">
-                    <div class="upload-container">
-                        <h2>Clinic Images</h2>
-                        <p>Kindly upload four images of your clinic or workspace.</p>
-
-                        <label class="upload-box">
-                            Upload +
-                            <input type="file">
-                        </label>
-
-                        <label class="upload-box">
-                            Upload +
-                            <input type="file">
-                        </label>
-
-                        <label class="upload-box">
-                            Upload +
-                            <input type="file">
-                        </label>
-
-                        <label class="upload-box">
-                            Upload +
-                            <input type="file">
-                        </label>
-                    </div>
-                    <button type="button" class="btn btn-secondary rounded-pill px-3 ">Previous</button>
-                    <button type="submit" class="btn btn-teal rounded-pill px-3">Submit</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

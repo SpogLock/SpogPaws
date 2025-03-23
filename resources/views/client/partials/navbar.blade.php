@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item pe-4">
-                    <a class="nav-link text-dark" href="/">Home</a>
+                    <a class="nav-link text-dark" href={{route('home')}}>Home</a>
                 </li>
                 <li class="nav-item pe-4 dropdown">
                     <a class="nav-link dropdown-toggle text-dark" href="#" id="vetsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,6 +61,11 @@
                         Hello, {{ $user['name'] }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('get-accountManagmentpage') }}">
+                                Manage Account
+                            </a>
+                        </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('logout-user') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

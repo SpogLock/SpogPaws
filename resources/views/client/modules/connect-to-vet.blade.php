@@ -26,78 +26,18 @@
             <div class="row pb-5">
                 <a class="pt-5 " style="color: #000" href="#"><img src="{{asset('icons/filter-icon.png')}}" alt="" class="pe-3">Filter</a>
                 <h1 class="hero-heading-black pt-3 pb-3 text-center" style="font-size: 64px;">Veterinary experts</h1>
-                <div class="col-lg-4 pb-3">
-                    <div class="card text-center shadow profile-card pb-3">
-                        <img src="{{asset('icons/avatar-dummy.png')}}" class="rounded-circle mx-auto mt-3" alt="Vet" width="80">
-                        <div class="card-body">
-                            <h5 class="card-title">ZEN CLINIC <span><img src="{{asset('icons/verified.png')}}" width="20" alt="Badge"></span></h5>
-                            <p class="star-rating">★★★★★</p>
-                            <p class="card-text">“Vets on our platform are verified professionals that adhere to lawful medical practices.”</p>
-                            <a href="{{route('get-vets-detailpage')}}" class="btn btn-dark">Check Details</a>
-                            <p class="pt-3">PKR 2999/hr</p>
+                @foreach ($clinics['data'] ?? [] as $clinic)
+                    <div class="col-lg-4 pb-3">
+                        <div class="card text-center shadow profile-card pb-3">
+                            <img src="{{ asset('icons/avatar-dummy.png') }}" class="rounded-circle mx-auto mt-3" alt="Vet" width="80">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $clinic['clinicName'] ?? 'No Name' }}</h5>
+                                <p class="card-text">{{ $clinic['about'] ?? 'No information available' }}</p>
+                                <a href="{{ route('get-vets-detailpage', ['id' => $clinic['clinicId'] ?? 0]) }}" class="btn btn-dark">Check Details</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 pb-3">
-                    <div class="card text-center shadow profile-card pb-3">
-                        <img src="{{asset('icons/avatar-dummy.png')}}" class="rounded-circle mx-auto mt-3" alt="Vet" width="80">
-                        <div class="card-body">
-                            <h5 class="card-title">ZEN CLINIC <span><img src="{{asset('icons/verified.png')}}" width="20" alt="Badge"></span></h5>
-                            <p class="star-rating">★★★★★</p>
-                            <p class="card-text">“Vets on our platform are verified professionals that adhere to lawful medical practices.”</p>
-                            <a href="{{route('get-vets-detailpage')}}" class="btn btn-dark">Check Details</a>
-                            <p class="pt-3">PKR 2999/hr</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 pb-3">
-                    <div class="card text-center shadow profile-card pb-3">
-                        <img src="{{asset('icons/avatar-dummy.png')}}" class="rounded-circle mx-auto mt-3" alt="Vet" width="80">
-                        <div class="card-body">
-                            <h5 class="card-title">ZEN CLINIC <span><img src="{{asset('icons/verified.png')}}" width="20" alt="Badge"></span></h5>
-                            <p class="star-rating">★★★★★</p>
-                            <p class="card-text">“Vets on our platform are verified professionals that adhere to lawful medical practices.”</p>
-                            <a href="{{route('get-vets-detailpage')}}" class="btn btn-dark">Check Details</a>
-                            <p class="pt-3">PKR 2999/hr</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 pb-3">
-                    <div class="card text-center shadow profile-card pb-3">
-                        <img src="{{asset('icons/avatar-dummy.png')}}" class="rounded-circle mx-auto mt-3" alt="Vet" width="80">
-                        <div class="card-body">
-                            <h5 class="card-title">ZEN CLINIC <span><img src="{{asset('icons/verified.png')}}" width="20" alt="Badge"></span></h5>
-                            <p class="star-rating">★★★★★</p>
-                            <p class="card-text">“Vets on our platform are verified professionals that adhere to lawful medical practices.”</p>
-                            <a href="{{route('get-vets-detailpage')}}" class="btn btn-dark">Check Details</a>
-                            <p class="pt-3">PKR 2999/hr</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 pb-3">
-                    <div class="card text-center shadow profile-card pb-3">
-                        <img src="{{asset('icons/avatar-dummy.png')}}" class="rounded-circle mx-auto mt-3" alt="Vet" width="80">
-                        <div class="card-body">
-                            <h5 class="card-title">ZEN CLINIC <span><img src="{{asset('icons/verified.png')}}" width="20" alt="Badge"></span></h5>
-                            <p class="star-rating">★★★★★</p>
-                            <p class="card-text">“Vets on our platform are verified professionals that adhere to lawful medical practices.”</p>
-                            <a href="{{route('get-vets-detailpage')}}" class="btn btn-dark">Check Details</a>
-                            <p class="pt-3">PKR 2999/hr</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 pb-3">
-                    <div class="card text-center shadow profile-card pb-3">
-                        <img src="{{asset('icons/avatar-dummy.png')}}" class="rounded-circle mx-auto mt-3" alt="Vet" width="80">
-                        <div class="card-body">
-                            <h5 class="card-title">ZEN CLINIC <span><img src="{{asset('icons/verified.png')}}" width="20" alt="Badge"></span></h5>
-                            <p class="star-rating">★★★★★</p>
-                            <p class="card-text">“Vets on our platform are verified professionals that adhere to lawful medical practices.”</p>
-                            <a href="{{route('get-vets-detailpage')}}" class="btn btn-dark">Check Details</a>
-                            <p class="pt-3">PKR 2999/hr</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

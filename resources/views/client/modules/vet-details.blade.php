@@ -18,12 +18,12 @@
             </div>
         </div>
         <div class="col-lg-5">
-            <h1 class="hero-heading-black" style="font-size: 64px;">Zen Clinic <img src="{{asset('icons/verified.png')}}" width="40" alt="Badge"></h1>
+            <h1 class="hero-heading-black" style="font-size: 64px;">{{ $clinicData['data']['clinicName'] ?? 'Clinic Name Not Available' }} <img src="{{asset('icons/verified.png')}}" width="40" alt="Badge"></h1>
             <h4>Trusted by clients since 2007</h4>
             <div class="col-lg-10">
-                <p>We are dedicated to providing exceptional healthcare services with a focus on compassionate, patient-centered care.</p>
+                <p>{{ $clinicData['data']['about'] ?? 'Clinic Information Not Available' }}</p>
                 <p class="mt-3">Our team of experienced doctors and healthcare professionals is committed to ensuring that every patient receives personalized treatment in a warm and welcoming environment.</p>
-                <h4>Achivements</h4>
+                {{-- <h4>Achivements</h4>
                 <div class="row pb-5">
                     <div class="col">
                         <img src="{{asset('icons/fav-icon.png')}}" width="80" alt="">
@@ -34,7 +34,7 @@
                     <div class="col">
                         <img src="{{asset('icons/heart-paw-icon.png')}}" width="80" alt="">
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -45,22 +45,18 @@
 <div class="container-fluid clinic-details-section" >
     <h1 class="hero-heading-white text-center pt-5" style="font-size: 64px;">ZEN CLINIC OFFERS</h1>
     <div class="row justify-content-center px-5 pb-5">
-        <div class="col-lg-8">
-            <h1 class="hero-heading-white pt-5" style="font-size: 35px;">GENERAL TREATMENT :</h1>
-            <p class="text-white" >We are dedicated to providing exceptional healthcare services with a focus on compassionate, patient-centered care.  Our team of experienced doctors and healthcare professionals is committed to ensuring that every patient receives personalized treatment in a warm and welcoming environment.</p>
-            <h4 class="text-white">charges: 1000 pkr/hr</h4>
-        </div>
-        <div class="col-lg-8">
-            <h1 class="hero-heading-white pt-5" style="font-size: 35px;">GROOMING & CARE :</h1>
-            <p class="text-white" >We are dedicated to providing exceptional healthcare services with a focus on compassionate, patient-centered care.  Our team of experienced doctors and healthcare professionals is committed to ensuring that every patient receives personalized treatment in a warm and welcoming environment.</p>
-            <h4 class="text-white">charges: 1000 pkr/hr</h4>
-        </div>
-        <div class="col-lg-8">
-            <h1 class="hero-heading-white pt-5" style="font-size: 35px;">vaccination & medical check: </h1>
-            <p class="text-white" >We are dedicated to providing exceptional healthcare services with a focus on compassionate, patient-centered care.  Our team of experienced doctors and healthcare professionals is committed to ensuring that every patient receives personalized treatment in a warm and welcoming environment.</p>
-            <h4 class="text-white">charges: 1000 pkr/hr</h4>
-        </div>
-        <div class="col-lg-8">
+        @if(!empty($clinicOffers['data']))
+            @foreach($clinicOffers['data'] as $offer)
+                <div class="col-lg-8 pb-3">
+                    <h3 class="text-white">{{ $offer['offerTitle'] ?? 'Service Title' }}</h3>
+                    <p class="text-white">{{ $offer['description'] ?? 'No description available' }}</p>
+                    <h4 class="text-white">Charges: {{ $offer['price'] ?? 'N/A' }} PKR</h4>
+                </div>
+            @endforeach
+            @else
+                <p class="text-white">No services available for this clinic.</p>
+            @endif
+        {{-- <div class="col-lg-8">
             <h1 class="hero-heading-white pt-5 pb-3" style="font-size: 35px;">pets for adoption: </h1>
             <div class="row">
                 <div class="col-lg-4">
@@ -97,7 +93,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 {{-- Clinic booking section --}}
@@ -107,15 +103,14 @@
         <div class="col-lg-5">
             <div class="col-lg-8">
                 <h1>CONTACT</h1>
-                <p>Address xyz , street xyz, block xyz , apartment xyz, city xyz, postal xyz</p>
+                <p>{{ $clinicData['data']['address'] ?? 'Clinic Address Not Available' }}</p>
                 <div class="row">
                     <div class="col-lg-5">
-                        <p>+92 123456789</p>
-                        <p>+92 123456789</p>
+                        <p>{{ $clinicData['data']['phoneNumber'] ?? 'Contact Number Not Available' }}</p>
                     </div>
                     <div class="col-lg-5 mx-auto">
                         <img src="{{asset('icons/calendar.png')}}" width="40" alt="">
-                        <p>Open 24/7</p>
+                        <p>{{ $clinicData['data']['openingHours'] ?? 'Opening Details Not Avaliable' }}</p>
                     </div>
                 </div>
             </div>

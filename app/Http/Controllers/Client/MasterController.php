@@ -8,17 +8,8 @@ use Illuminate\Http\Request;
 class MasterController extends Controller
 {
 
-
     public function get_vets_registerpage(){
         return view('client.modules.become-vet-form');
-    }
-
-    public function get_find_vetspage(){
-        return view('client.modules.connect-to-vet');
-    }
-
-    public function get_vets_detailpage(){
-        return view('client.modules.vet-details');
     }
 
     public function get_casestudiespage(){

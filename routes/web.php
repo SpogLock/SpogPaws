@@ -2,23 +2,22 @@
 
 use App\Http\Controllers\Client\MasterController;
 use App\Http\Controllers\Client\AuthController;
-
+use App\Http\Controllers\Client\AccountController;
+use App\Http\Controllers\Client\ClinicController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::get('/', function () {
     return view('client.modules.home');
-});
-
+})->name('home');
 Route::controller(MasterController::class)->group(function () {
     Route::get('/for-vets/register', 'get_vets_registerpage')->name('get-vets-registerpage');
-    Route::get('/pet-owners/find-vet', 'get_find_vetspage')->name('get-find-vetspage');
-    Route::get('/pet-owners/find-vet/vet-details', 'get_vets_detailpage')->name('get-vets-detailpage');
     Route::get('/case-studies', 'get_casestudiespage')->name('get-casestudiespage');
     Route::get('/pet-owners/adopt-pet', 'get_adoptionpage')->name('get-adoptionpage');
     Route::get('/pet-owners/report-case', 'get_reportcasepage')->name('get-reportcasepage');
 });
 
+// User Login & Authentication Routes
 Route::controller(AuthController::class)->group(function () {
     Route::get('/signup', 'get_registerpage')->name('get-registerpage');
     Route::post('/register','signupuser')->name('register-user');
@@ -26,3 +25,25 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/login','loginuser')->name('login-user');
     Route::post('/logout','logoutUser')->name('logout-user');
 });
+
+//Protected Routes (Require Authentication)
+// Route::middleware(['auth'])->group(function () {
+    Route::prefix('manage-account')->controller(AccountController::class)->group(function () {
+        Route::get('/', 'get_accountManagmentpage')->name('get-accountManagmentpage');
+        Route::post('/update-personal-info', 'update_personal_info')->name('update-personal-info');
+        Route::post('/update-password', 'update_password')->name('update-password');
+    });
+
+    Route::prefix('pet-owners')->controller(AccountController::class)->group(function () {
+    Route::controller(ClinicController::class)->group(function () {
+        Route::get('/', 'get_find_vetspage')->name('get-find-vetspage');
+        Route::get('/vet-details/{id}', 'get_vets_detailpage')->name('get-vets-detailpage');
+    });
+});
+
+
+
+// });
+
+
+
