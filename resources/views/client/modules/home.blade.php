@@ -7,21 +7,21 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center">
-                <h1 class="hero-heading px-4">BE THEIR <span class="text-teal">HERO</span></h1>
+                <h1 class="hero-heading px-4 pt-5 pt-md-0">BE THEIR <span class="text-teal">HERO</span></h1>
                 <h2 class="hero-subtitle px-4">From Shelters to Loving Homes, <br>Help Us Save More Pets.</h2>
                 <div>
                     <a class="btn btn-teal rounded-pill text-white px-4 py-2 mx-3" href="#">DONATE</a>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <img src="{{asset('images/hero-img.png')}}" class="img-fluid pt-5" alt="">
+            <div class="col-6 col-lg-6">
+                <img src="{{asset('images/hero-img.png')}}" class="img-fluid pt-5 text-center" alt="">
             </div>
         </div>
     </div>
 
 
         {{-- Overlapping Boxes Section --}}
-        <div class="row  position-absolute w-100" style="bottom: -280px;"> <!-- Adjust bottom value for overlap -->
+        <div class="row  position-absolute w-100 d-none d-md-flex" style="bottom: -280px;"> <!-- Adjust bottom value for overlap -->
             <div class="col-md-3 text-center mx-3 shadow rounded-4 p-4" style="background-color: #EDEFF0;">
                 <img src="{{asset('images/dogo-adoption.png')}}"  width="200" alt="Skipper">
                 <h4 class="text-dark">SKIPPERS</h4>
@@ -41,7 +41,7 @@
 
 
 {{-- Divider --}}
-<div class="divider" style="height: 40vh;"></div>
+<div class="divider d-none d-md-flex" style="height: 40vh;"></div>
 
 {{-- Petcare Section --}}
 <div class="container-fluid petcaresection py-5">
@@ -118,11 +118,11 @@
         <div class="row">
             <div class="col-lg-6">
                 <h1 class="hero-heading-white px-4 pt-5">GET <span class="text-teal">MORE</span><br>WITH OUR APP.</h1>
-                <p class="text-white px-4" style="font-size: 24px;">Connect with vets anytime anywhere with our mobile app. Download the app now on PlayStore.</p>
+                <p class="main-text text-white px-4" >Connect with vets anytime anywhere with our mobile app. Download the app now on PlayStore.</p>
                 <div class="row px-4 pt-4">
                     <div class="col d-inline">
-                        <img src="{{asset('icons/playstore-big.png')}}" alt="">
-                        <img src="{{asset('icons/apple-big.png')}}" alt="">
+                        <img class="source-icons" src="{{asset('icons/playstore-big.png')}}" alt="">
+                        <img class="source-icons" src="{{asset('icons/apple-big.png')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -139,7 +139,7 @@
         <div class="row">
             <h1 class="hero-heading-black px-4">ALL LIVES MATTER</h1>
             <div class="col-lg-12 px-4">
-                <p style="font-size: 24px;">Read about out latest efforts and how we spend<br> your donation money to make an impact for the<br> good cause.</p>
+                <p class="main-text">Read about out latest efforts and how we spend<br> your donation money to make an impact for the<br> good cause.</p>
                 <a class="btn btn-teal rounded-pill text-white px-4 py-2 " href="{{route('get-casestudiespage')}}">CHECK OUT OUR CASE STUDIES</a>
                 <div class="row">
                     <div class="col-lg-4 pt-3">

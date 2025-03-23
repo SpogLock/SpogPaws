@@ -127,3 +127,27 @@ p{
     background-color: #6848BD;
 
 }
+
+.main-text{
+    font-size: 24px;
+}
+
+@media screen and (max-width: 480px) {
+    .hero-heading {
+        font-size: 50px;
+    }
+
+    .hero-heading-black,.hero-heading-white {
+        font-size: 40px;
+    }
+
+    .hero-subtitle{
+        font-size: 20px;
+    }
+    .main-text{
+        font-size: 18px;
+    }
+    .source-icons{
+        width: 120px;
+    }
+}
