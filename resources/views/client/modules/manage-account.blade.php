@@ -1,91 +1,6 @@
 @extends('client.layouts.main')
 @section('page')
-    <style>
-        .profile-container {
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border: solid 1px #000;
-        }
-
-        .sidebar {
-            background: #20e2c6;
-            color: white;
-            border-radius: 10px;
-            padding: 20px;
-            height: 100%;
-            border: solid 1px #000;
-        }
-
-        .sidebar a {
-            color: #000;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 5px;
-            cursor: pointer;
-        }
-
-        .sidebar a.active,
-        .sidebar a:hover {
-            background: #000;
-            color: #fff;
-        }
-
-        .form-control {
-            border-radius: 8px;
-        }
-
-        .floating-tabs {
-            display: none;
-            /* Hidden on desktop */
-            overflow-x: auto;
-            white-space: nowrap;
-            background: #fff;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-
-        }
-
-        .floating-tabs a {
-            display: inline-block;
-            padding: 10px 15px;
-            color: #000;
-            font-weight: bold;
-            text-decoration: none;
-            border-bottom: 2px solid transparent;
-        }
-
-        .floating-tabs a.active {
-            border-bottom: 2px solid #3aa698;
-            color: #3aa698;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none;
-            }
-
-            /* Hide sidebar on mobile */
-            .floating-tabs {
-                display: flex;
-            }
-
-            .profile-container {
-                margin-top: 50px;
-            }
-        }
-    </style>
-
-    <div class="container my-3">
+    <div data-screen="accountManagment" class="container my-3">
         <div class="row">
             <!-- Sidebar (Desktop) -->
             <div class="col-md-3 d-none d-md-block">
@@ -205,36 +120,46 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const tabLinks = document.querySelectorAll(".tab-link");
-            const tabContents = document.querySelectorAll(".tab-content");
+      document.addEventListener("DOMContentLoaded", function () {
+    console.log("Script Loaded");
 
-            // Retrieve the last active tab from localStorage
-            let activeTab = localStorage.getItem("activeTab") || "personal-info";
+    const tabLinks = document.querySelectorAll(".tab-link");
+    const tabContents = document.querySelectorAll(".tab-content");
 
-            // Function to activate the selected tab
-            function activateTab(target) {
-                tabLinks.forEach(tab => tab.classList.remove("active"));
-                tabContents.forEach(content => content.style.display = "none");
+    // Identify screen uniquely (using body ID, class, or another attribute)
+    const screenId = document.body.getAttribute("data-screen") || "defaultScreen";
+    const storageKey = `activeTab_${screenId}`; // Unique key for each screen
 
-                document.querySelector(`[data-target='${target}']`).classList.add("active");
-                document.getElementById(target).style.display = "block";
+    let activeTab = localStorage.getItem(storageKey) || "clinic-info"; // Default tab
 
-                // Store active tab in localStorage
-                localStorage.setItem("activeTab", target);
-            }
+    function activateTab(target) {
+        console.log(`Activating Tab on ${screenId}:`, target);
 
-            // Set the active tab on page load
-            activateTab(activeTab);
+        // Remove active class from all tab links
+        tabLinks.forEach(tab => tab.classList.remove("active"));
+        tabContents.forEach(content => content.style.display = "none");
 
-            // Event listener for tab clicks
-            tabLinks.forEach(link => {
-                link.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    let target = this.getAttribute("data-target");
-                    activateTab(target);
-                });
-            });
+        // Activate correct tab links
+        document.querySelectorAll(`[data-target='${target}']`).forEach(tab => tab.classList.add("active"));
+        let targetContent = document.getElementById(target);
+
+        if (targetContent) {
+            targetContent.style.display = "block";
+            localStorage.setItem(storageKey, target);
+        } else {
+            console.log(`Error: Target content not found for ${screenId} -`, target);
+        }
+    }
+
+    activateTab(activeTab); // Ensure the last active tab is set on page load
+
+    tabLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            let target = this.getAttribute("data-target");
+            activateTab(target);
         });
+    });
+});
     </script>
 @endsection

@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Helpers\ApiHelper;
 
 class AccountController extends Controller
 {
-    public function get_accountManagmentpage(){
+    public function get_accountManagmentpage()
+    {
         return view('client.modules.manage-account');
     }
 
@@ -20,20 +24,20 @@ class AccountController extends Controller
             return redirect()->back()->with('error', 'User not authenticated.');
         }
 
-        $apiUrl = "https://gnat-careful-sparrow.ngrok-free.app/api/v1/user/update/{$user['user_id']}";
+        $endpoint = "/user/update/{$user['user_id']}";
 
         $formData = [
             'name' => $request->name,
         ];
 
-        $response = Http::post($apiUrl, $formData);
+        $response = ApiHelper::post($endpoint, $formData);
+
         if ($response->successful()) {
             session()->put('user.name', $request->name);
             return redirect()->back()->with('success', 'Personal information updated successfully.');
-        } else {
-            $errorMessage = $response->json()['message'] ?? 'Failed to update personal information.';
-            return redirect()->back()->with('error', $errorMessage);
         }
+
+        return redirect()->back()->with('error', $response->json()['message'] ?? 'Failed to update personal information.');
     }
 
     public function update_password(Request $request)
@@ -56,28 +60,28 @@ class AccountController extends Controller
             return redirect()->back()->with('error', 'Current password is incorrect.');
         }
 
-        // If password matches, proceed with the API request
+        $endpoint = "/user/update/{$user['id']}";
+
         $formData = [
             'current_password' => $request->current_password,
             'new_password' => $request->new_password,
         ];
 
-        $response = Http::post("https://gnat-careful-sparrow.ngrok-free.app/api/v1/user/update/{$user['id']}", $formData);
+        $response = ApiHelper::post($endpoint, $formData);
 
         if ($response->successful()) {
             return redirect()->back()->with('success', 'Password updated successfully.');
-        } else {
-            $errorMessage = 'Failed to update password.';
-            $errorBody = $response->json();
-
-            if (isset($errorBody['message'])) {
-                $errorMessage = $errorBody['message'];
-            } elseif (isset($errorBody['errors'])) {
-                $errorMessage = implode(', ', array_map(fn ($errors) => implode(' ', $errors), $errorBody['errors']));
-            }
-
-            return redirect()->back()->with('error', $errorMessage);
         }
-    }
 
+        $errorMessage = 'Failed to update password.';
+        $errorBody = $response->json();
+
+        if (isset($errorBody['message'])) {
+            $errorMessage = $errorBody['message'];
+        } elseif (isset($errorBody['errors'])) {
+            $errorMessage = implode(', ', array_map(fn ($errors) => implode(' ', $errors), $errorBody['errors']));
+        }
+
+        return redirect()->back()->with('error', $errorMessage);
+    }
 }

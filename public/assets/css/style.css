@@ -132,6 +132,89 @@ p{
     font-size: 24px;
 }
 
+.profile-container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: solid 1px #000;
+}
+
+.sidebar {
+    background: #20e2c6;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    height: 100%;
+    border: solid 1px #000;
+}
+
+.sidebar a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+    background: #000;
+    color: #fff;
+}
+
+.form-control {
+    border-radius: 8px;
+}
+
+.floating-tabs {
+    display: none;
+    /* Hidden on desktop */
+    overflow-x: auto;
+    white-space: nowrap;
+    background: #fff;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+}
+
+.floating-tabs a {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+
+.floating-tabs a.active {
+    border-bottom: 2px solid #3aa698;
+    color: #3aa698;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    /* Hide sidebar on mobile */
+    .floating-tabs {
+        display: flex;
+    }
+
+    .profile-container {
+        margin-top: 50px;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .hero-heading {
         font-size: 50px;

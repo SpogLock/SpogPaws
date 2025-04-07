@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
-
-
+use App\Helpers\ApiHelper;
 
 class AuthController extends Controller
 {
@@ -32,26 +30,12 @@ class AuthController extends Controller
         ];
 
         // Send request to API
-        $response = Http::post('https://gnat-careful-sparrow.ngrok-free.app/api/v1/user/signup', $formData);
+        $response = ApiHelper::post('/user/signup', $formData);
 
-        if ($response->successful())
-        {
+        if (isset($response['status']) && $response['status'] === 'success') {
             return redirect()->route('get-loginpage')->with('success', 'Signup successful! Please log in.');
-        }
-        else
-        {
-            // Extract error details
-            $errorMessage = 'Signup failed. Please try again.';
-            if ($response->failed()) {
-                $errorBody = $response->json();
-                if (isset($errorBody['message'])) {
-                    $errorMessage = $errorBody['message'];
-                } elseif (isset($errorBody['errors'])) {
-                    $errorMessage = implode(', ', array_map(function ($errors) {
-                        return implode(' ', $errors);
-                    }, $errorBody['errors']));
-                }
-            }
+        } else {
+            $errorMessage = $response['message'] ?? 'Signup failed. Please try again.';
             return redirect()->route('get-registerpage')->with('error', $errorMessage);
         }
     }
@@ -74,24 +58,15 @@ class AuthController extends Controller
             'password' => $request->password,
         ];
 
-        $response = Http::post('https://gnat-careful-sparrow.ngrok-free.app/api/v1/user/login', $formData);
-        $data = $response->json(); // Decode API response
+        $response = ApiHelper::post('/user/login', $formData);
 
         // Check if login was successful
-        if ($response->successful() && isset($data['status']) && $data['status'] === 'success') {
+        if (isset($response['status']) && $response['status'] === 'success') {
             // Store user details in session
-            Session::put('user', $data['data']);
-
-            return redirect('/')->with('success', 'Login successful! Welcome, ' . $data['data']['name']);
-        }
-        else
-        {
-        // Handle failed login with detailed error messages
-            $errorMessage = 'Login failed. Please check your credentials.';
-
-            if (isset($data['message'])) {
-                $errorMessage = $data['message'];
-            }
+            Session::put('user', $response['data']);
+            return redirect('/')->with('success', 'Login successful! Welcome, ' . $response['data']['name']);
+        } else {
+            $errorMessage = $response['message'] ?? 'Login failed. Please check your credentials.';
             return redirect()->route('get-loginpage')->with('error', $errorMessage);
         }
     }

@@ -33,3 +33,52 @@
     height: 100%;
     cursor: pointer;
 }
+
+ /* Hide all steps initially */
+ .form-step {
+    display: none;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Active step */
+.form-step.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Bouncy entrance animation */
+.form-step.bounce-in {
+    animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Bouncy exit animation */
+.form-step.bounce-out {
+    animation: bounceOut 0.4s ease-in forwards;
+}
+
+@keyframes bounceOut {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}

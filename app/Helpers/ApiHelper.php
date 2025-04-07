@@ -37,9 +37,7 @@ class ApiHelper
         self::init();
         $url = self::$baseUrl . $endpoint;
 
-        $response = Http::post($url, $data);
-
-        return $response->json();
+        return Http::post($url, $data);
     }
 
     /**
