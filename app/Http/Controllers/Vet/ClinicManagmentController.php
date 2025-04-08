@@ -55,7 +55,7 @@ class ClinicManagmentController extends Controller
         $data['price'] = (int) $data['price'];
         $data['clinicId'] = (int) $data['clinicId'];
 
-        // dd($data); // Debugging output
+        // dd($data); // Debug that bitch
 
         // Send the data to the external API
         $response = ApiHelper::post('/offer/create-offer', $data);
@@ -67,6 +67,42 @@ class ClinicManagmentController extends Controller
             return redirect()->back()->with('error', $response['message'] ?? 'Something went wrong.');
         }
     }
+
+    public function getService($id)
+    {
+        $response = ApiHelper::get("/offer/get-offer/{$id}");
+
+        if (isset($response['status']) && $response['status'] === 'success') {
+            return response()->json($response['data']);
+        }
+
+        return response()->json(['error' => 'Service not found'], 404);
+    }
+
+    public function geteditServicePage($id)
+    {
+        $clinicId = Session::get('user')['clinic_id'] ?? null;
+        // dd($clinicId);
+
+        if (!$clinicId) {
+            return redirect()->back()->with('error', 'Clinic not found');
+        }
+
+        $offersResponse = ApiHelper::get("/offer/get-offers-by-clinicId/{$clinicId}");
+
+        if (!isset($offersResponse['data'])) {
+            return redirect()->back()->with('error', 'Unable to fetch services');
+        }
+
+        $offer = collect($offersResponse['data'])->firstWhere('offerId', (int)$id);
+
+        if (!$offer) {
+            return redirect()->back()->with('error', 'Service not found');
+        }
+
+        return view('vets.modules.edit-services', compact('offer','clinicId'));
+    }
+
 
     // Function to update an existing service
     public function updateService(Request $request, $id)

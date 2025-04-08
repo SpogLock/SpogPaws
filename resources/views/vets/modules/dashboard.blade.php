@@ -81,8 +81,8 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    <button class="btn btn-teal edit-service" data-id="{{ $offer['id'] ?? '' }}">Edit</button>
-                                    <button class="btn btn-teal delete-service" data-id="{{ $offer['id'] ?? '' }}">Delete</button>
+                                    <a class="btn btn-teal edit-service" href="{{ route('get-editservicepage', $offer['offerId']) }}">Edit</a>
+                                    <a class="btn btn-teal delete-service" href="#">Delete</a>
                                 </td>
                             </tr>
                         @empty
@@ -136,64 +136,6 @@
                             <button type="submit" class="btn btn-teal">Save</button>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Edit Service Modal -->
-        <div class="modal fade" id="editServiceModal" tabindex="-1" aria-labelledby="editServiceModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editServiceModalLabel">Edit Service</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form id="editServiceForm">
-                        <div class="modal-body">
-                            <input type="hidden" name="clinic_id" value="{{ $clinicData['id'] ?? '' }}">
-                            <div class="mb-3">
-                                <label class="form-label">Service Name</label>
-                                <input type="text" name="offerTitle" class="form-control" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Description</label>
-                                <textarea name="description" class="form-control"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Price</label>
-                                <input type="number" name="price" class="form-control" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Status</label>
-                                <select name="isActive" class="form-control">
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-teal">Update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Delete Confirmation -->
-        <div class="modal fade" id="deleteServiceModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Confirm Deletion</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure you want to delete this service?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
-                    </div>
                 </div>
             </div>
         </div>

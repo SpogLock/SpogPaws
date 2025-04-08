@@ -56,6 +56,7 @@ Route::controller(AuthController::class)->group(function () {
 
     Route::prefix('clinic-services')->controller(ClinicManagmentController::class)->group(function () {
         Route::post('/add', 'addService')->name('add-service');
+        Route::get('/edit-service/{id}','geteditServicePage')->name('get-editservicepage');
         Route::put('/update/{id}', 'updateService')->name('update-service');
         Route::delete('/delete/{id}', 'deleteService')->name('delete-service');
     });
