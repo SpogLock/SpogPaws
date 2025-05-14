@@ -1,6 +1,6 @@
 # CI/CD Deployment
 
-This project includes a CI/CD pipeline using GitHub Actions to automatically deploy to your server when changes are pushed to the main branch.
+The project includes a CI/CD pipeline using GitHub Actions to automatically deploy to your server when changes are pushed to the main branch.
 
 ## Setup Instructions
 
