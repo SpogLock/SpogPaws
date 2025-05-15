@@ -62,7 +62,6 @@ jobs:
           script: |
             cd ${{ secrets.SERVER_PATH }}
             php artisan down
-            php artisan migrate --force
             php artisan optimize:clear
             php artisan optimize
             php artisan up 
